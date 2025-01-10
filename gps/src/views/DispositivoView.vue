@@ -126,7 +126,7 @@ const typeEffect = () => {
 // Funciones principales
 const cargarDispositivos = async () => {
   try {
-    const response = await fetch('http://54.236.5.204/devices');
+    const response = await fetch('http://3.92.51.134/devices');
     if (!response.ok) {
       throw new Error('Error en la respuesta de la API');
     }
@@ -176,7 +176,7 @@ const editarDispositivo = (index) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://54.236.5.204/devices/${dispositivo._id}`, {
+      fetch(`http://3.92.51.134/devices/${dispositivo._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -214,7 +214,7 @@ const eliminarDispositivo = (index) => {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://54.236.5.204/devices/${dispositivo._id}`, {
+      fetch(`http://3.92.51.134/devices/${dispositivo._id}`, {
         method: 'DELETE'
       })
         .then(response => {
@@ -276,7 +276,7 @@ const insertarDispositivo = async () => {
   });
 
   if (imei) {
-    fetch('http://54.236.5.204/devices', {
+    fetch('http://3.92.51.134/devices', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

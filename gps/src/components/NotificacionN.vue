@@ -71,7 +71,7 @@ const markAsRead = (index) => {
 
 const cargarNotificaciones = async () => {
   try {
-    const response = await fetch('http://3.92.51.134/notificaciones');
+    const response = await fetch('http://54.160.235.122/notificaciones');
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Error del servidor:', errorText);
@@ -95,7 +95,7 @@ const cargarNotificaciones = async () => {
 
 const clearNotifications = async () => {
     try {
-        await fetch('http://3.92.51.134/notificaciones', {
+        await fetch('http://54.160.235.122/notificaciones', {
             method: 'DELETE'
         });
         notifications.value = [];
@@ -107,7 +107,7 @@ const clearNotifications = async () => {
 onMounted(() => {
   cargarNotificaciones();
 
-  let ws = new WebSocket('ws://3.92.51.134');
+  let ws = new WebSocket('ws://54.160.235.122');
   ws.onmessage = (event) => {
     const notificacion = JSON.parse(event.data);
     if (!notifications.value.some(alert => alert._id === notificacion._id)) {
@@ -117,7 +117,7 @@ onMounted(() => {
   ws.onclose = () => {
     console.log('WebSocket cerrado. Reintentando...');
     setTimeout(() => {
-      const newWs = new WebSocket('ws://3.92.51.134');
+      const newWs = new WebSocket('ws://54.160.235.122');
       ws = newWs;
     }, 5000);
   };

@@ -169,7 +169,7 @@ async function showDeviceOnMap(data) {
 }
 async function startTracking(device) {
   // Conectar al servidor WebSocket
-  const response = await fetch(`http://54.160.235.122/devices/status/${device.imei}`);
+  const response = await fetch(`http://13.219.21.71/devices/status/${device.imei}`);
     if (!response.ok) {
       throw new Error('Error en la respuesta de la API');
     }
@@ -179,7 +179,7 @@ async function startTracking(device) {
   if (ws) {
     ws.close();
   }
-  ws = new WebSocket('ws://54.160.235.122');
+  ws = new WebSocket('ws://13.219.21.71');
 
   ws.onopen = () => {
     console.log('Conectado al servidor WebSocket');
@@ -212,7 +212,7 @@ async function startTracking(device) {
 }
 const sendCommand = async (commandNumber) => {
   try {
-    const response = await axios.get(`http://54.160.235.122/send-command/${commandNumber}`);
+    const response = await axios.get(`http://13.219.21.71/send-command/${commandNumber}`);
     console.log(response.data);
     Swal.fire({
       title: 'Comando Enviado',
@@ -258,7 +258,7 @@ const showAlert = (item) => {
 // Carga los dispositivos desde la API
 const cargarDispositivos = async () => {
   try {
-    const response = await fetch('http://54.160.235.122/devices');
+    const response = await fetch('http://13.219.21.71/devices');
     if (!response.ok) {
       throw new Error('Error en la respuesta de la API');
     }

@@ -147,7 +147,7 @@ onMounted(() => {
 
 const cargarRutas = async () => {
   try {
-    const response = await fetch('http://54.160.235.122/routes');
+    const response = await fetch('http://13.219.21.71/routes');
     if (!response.ok) {
       throw new Error('Error en la respuesta de la API');
     }
@@ -162,7 +162,7 @@ const cargarRutas = async () => {
 
 const cargarDispositivos = async () => {
   try {
-    const response = await fetch('http://54.160.235.122/devices');
+    const response = await fetch('http://13.219.21.71/devices');
     if (!response.ok) {
       throw new Error('Error en la respuesta de la API');
     }
@@ -184,7 +184,7 @@ const selectRoute = async (route) => {
   console.log('Ruta seleccionada:', route);
 
   try {
-    const response = await axios.get(`http://54.160.235.122/routes/get-route/${route._id}`);
+    const response = await axios.get(`http://13.219.21.71/routes/get-route/${route._id}`);
     const routeData = response.data.waypoints;
     waypoints = routeData.map(point => L.latLng(point.lat, point.lng));
 
@@ -235,7 +235,7 @@ const saveRoute = async () => {
     const route = waypoints.map(point => ({ lat: point.lat, lng: point.lng }));
 
     try {
-      const response = await axios.post('http://54.160.235.122/routes/save-route', { name: routeName.value, waypoints: route });
+      const response = await axios.post('http://13.219.21.71/routes/save-route', { name: routeName.value, waypoints: route });
       console.log('Ruta guardada:', response.data);
       routeNamed = routeName.value;
       routeid = response.data._id;
@@ -301,7 +301,7 @@ const confirmCreateRoute = async () => {
     console.log('Datos de la ruta a enviar con dispositivos:', routeData);
 
     // Hacer el PUT para actualizar el parámetro routeName de los dispositivos seleccionados
-    const putResponse = await axios.put(`http://54.160.235.122/devices/update-route/${routeid}`, routeData);
+    const putResponse = await axios.put(`http://13.219.21.71/devices/update-route/${routeid}`, routeData);
     console.log('Dispositivos actualizados:', putResponse.data);
 
     // Mostrar mensaje de confirmación con Swal.fire

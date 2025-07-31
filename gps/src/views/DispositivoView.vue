@@ -126,7 +126,7 @@ const typeEffect = () => {
 // Funciones principales
 const cargarDispositivos = async () => {
   try {
-    const response = await fetch('http://13.219.21.71/devices');
+    const response = await fetch('http://18.223.186.201/devices');
     if (!response.ok) {
       throw new Error('Error en la respuesta de la API');
     }
@@ -176,7 +176,7 @@ const editarDispositivo = (index) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://13.219.21.71/devices/${dispositivo._id}`, {
+      fetch(`http://18.223.186.201/devices/${dispositivo._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -214,7 +214,7 @@ const eliminarDispositivo = (index) => {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://13.219.21.71/devices/${dispositivo._id}`, {
+      fetch(`http://18.223.186.201/devices/${dispositivo._id}`, {
         method: 'DELETE'
       })
         .then(response => {
@@ -276,7 +276,7 @@ const insertarDispositivo = async () => {
   });
 
   if (imei) {
-    fetch('http://13.219.21.71/devices', {
+    fetch('http://18.223.186.201/devices', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -86,7 +86,7 @@ const alerts = ref([]);
 
 const cargarDispositivos = async () => {
     try {
-        const response = await fetch('http://13.219.21.71/devices');
+        const response = await fetch('http://18.223.186.201/devices');
         if (!response.ok) {
             throw new Error('Error en la respuesta de la API');
         }
@@ -217,7 +217,7 @@ const cargarAlertas = async (imei) => {
     }
     try {
         // Hacer la solicitud para obtener alertas por IMEI
-        const response = await fetch(`http://13.219.21.71/devices/alerts/${imei}`);
+        const response = await fetch(`http://18.223.186.201/devices/alerts/${imei}`);
         if (!response.ok) {
             const errorText = await response.text();
             console.error('Error del servidor:', errorText);
